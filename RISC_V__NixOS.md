@@ -87,15 +87,9 @@ How it began
 
 **1 ·** I started porting NixOS to the SpacemiT K1, then moved to the SpacemiT K3.
 
-<!-- pause -->
-
 **2 ·** After porting the K3 with the vendor kernel (SpacemiT), I successfully brought it to the mainline kernel.
 
-<!-- pause -->
-
 **3 ·** To do so, I had to create custom patches that did not exist yet.
-
-<!-- pause -->
 
 **4 ·** nixos-hardware: modules for the K3 and its variants.
 
@@ -112,7 +106,7 @@ From K1 to K3: why it matters
 | Storage / I/O  | PCIe 2.1            | PCIe Gen3, NVMe, UFS, 10 GbE  |
 | Virtualization | no                  | yes                           |
 
-<!-- pause -->
+
 
 **Why the K3 for NixOS?**
 
@@ -177,70 +171,19 @@ And now: riscv64 in nixpkgs
 
 <!-- reset_layout -->
 
-_+ pdfium, ffmpeg, schroedinger, httpcore, PostgreSQL…_
-
-<!-- end_slide -->
-
-Builders, Hydra and binary caches
-===
-
-<!-- column_layout: [1, 1] -->
-
-<!-- column: 0 -->
-
-**3 RISC-V builders on SpacemiT K3, running NixOS**
-
-build05, build06, build07.ynh.ovh
-
-<!-- new_line -->
-
-**Configuration**
-
-`github.com/liberodark/nix-community-builder`
-
-<!-- column: 1 -->
-
-**My Hydra instance** builds riscv64 packages on these machines
-
-<!-- new_line -->
-
-**Each builder serves its Nix store** as a binary cache over HTTPS (Harmonia)
-
-<!-- reset_layout -->
-
-<!-- pause -->
-
-**To use them, in your NixOS configuration:**
-
-```nix
-nix.settings = {
-  substituters = [
-    "https://build05.ynh.ovh"
-    "https://build06.ynh.ovh"
-    "https://build07.ynh.ovh"
-  ];
-  trusted-public-keys = [
-    "build05.ynh.ovh:bLxWKPjbKYOFxqrjOxv+cdwS3kFLuHEf1k6j8fAxbzM="
-    "build06.ynh.ovh:bPg6x17ztNd3uMxdclDvdJpTl2pwLiTdHTt9ymTNoMU="
-    "build07.ynh.ovh:+FpUDKUYk4H9uzLgtbE0MHOx+5Nm7YEFBrJJGiQ9O8U="
-  ];
-};
-```
+_+ pdfium, schroedinger, httpcore, PostgreSQL…_
 
 <!-- end_slide -->
 
 Goals and what's next
 ===
 
-<!-- incremental_lists: true -->
 <!-- list_item_newlines: 2 -->
 
 - Make NixOS 26.05 and 26.11 usable on RISC-V
 - nixos-hardware support for the K3 and its variants
 - Improve evaluation in nixpkgs in general
 - Next architecture: loongarch64, once riscv64 is done
-
-<!-- incremental_lists: false -->
 
 <!-- end_slide -->
 
@@ -256,3 +199,5 @@ Special thanks to...
 | **wolfgangwalther** | the GHC part           | `github.com/wolfgangwalther`    |
 | **corngood**        | the help on .NET       | `github.com/corngood`           |
 
+thank you all.
+===
